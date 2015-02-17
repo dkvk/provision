@@ -46,13 +46,14 @@
       - sublime-text
       - sourcetree
       - sonos
-      - navicat-for-mysql
+      #- navicat-for-mysql
       - omnigraffle
       - parallels-desktop
       - skype
-      - caffeine
+      #- caffeine
       - appcleaner
       - adobe-creative-cloud
+      - java
   tasks:
     - include: tasks/homebrew.yml
     - include: tasks/zsh.yml

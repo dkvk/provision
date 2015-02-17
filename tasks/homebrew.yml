@@ -1,0 +1,40 @@
+---
+- name: Check if Homebrew is installed
+  stat: path=/usr/local/bin/brew
+  register: brew_installed
+
+- name: Install Homebrew
+  shell: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  when: brew_installed.stat.exists == false
+
+- name: Update Homebrew
+  homebrew: update_homebrew=yes
+
+- name: Tap repos
+  homebrew_tap: tap={{ item }} state=present
+  with_items: taps
+
+- name: Install Homebrew libraries
+  homebrew: name={{ item }} state=present
+  with_items: brews
+
+- name: Check if Homebrew Cask is installed
+  stat: path=/usr/local/bin/brew-cask
+  register: brew_cask_installed
+  changed_when: brew_cask_installed.stat.exists == false
+
+- name: Install homebrew-cask
+  homebrew: name=brew-cask state=present
+  when: brew_cask_installed.stat.exists == false
+
+- name: Check for installed casks
+  shell: brew cask list --appdir=/Applications | grep {{ item }}
+  register: installed_casks
+  with_items: casks
+  failed_when: true == false
+  changed_when: "item not in installed_casks.stdout"
+
+- name: Install casks
+  homebrew_cask: name={{ item }} state=present
+  with_items: casks
+  when: "item not in installed_casks.results|map(attribute='stdout')"

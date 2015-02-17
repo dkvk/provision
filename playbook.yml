@@ -1,0 +1,58 @@
+---
+- hosts: all
+  vars:
+    taps:
+      - homebrew/dupes
+      - homebrew/versions
+      - homebrew/php
+      - casidiablo/custom
+      - phinze/cask
+      - thoughtbot/formulae
+    brews:
+      - findutils
+      - coreutils
+      - php56 # install before composer
+      - chruby
+      - curl
+      - composer
+      - docker
+      - drush
+      - git-flow
+      - heroku-toolbelt
+      - htop
+      - hub
+      - node
+      - php56-memcached
+      - php56-stats
+      - rsync
+      - rcm
+      - mackup
+      - memcached
+      - zsh
+    casks:
+      - asepsis
+      - dropbox
+      - flux
+      - google-chrome
+      - google-drive
+      - iterm2
+      - skype
+      - slack
+      - spotify
+      - vlc
+      - 1password
+      - phpstorm
+      - todoist
+      - sublime-text
+      - sourcetree
+      - sonos
+      - navicat-for-mysql
+      - omnigraffle
+      - parallels-desktop
+      - skype
+      - caffeine
+      - appcleaner
+      - adobe-creative-cloud
+  tasks:
+    - include: tasks/homebrew.yml
+    - include: tasks/zsh.yml

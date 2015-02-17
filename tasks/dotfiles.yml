@@ -1,0 +1,6 @@
+---
+- name: Check out dotfiles repo
+  git: repo=git@github.com:dkvk/dotfiles.git dest={{ ansible_env.HOME }}/.dotfiles
+
+- name: Apply dotfiles
+  shell: rcup -f -d {{ ansible_env.HOME }}/.dotfiles -I README -I LICENSE

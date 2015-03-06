@@ -24,11 +24,14 @@
       - node
       - php56-memcached
       - php56-stats
+      - php-code-sniffer
+      - phpmd
       - rsync
       - rcm
       - mackup
       - memcached
       - zsh
+      - hubflow
     casks:
       - asepsis
       - dropbox
@@ -50,10 +53,11 @@
       - omnigraffle
       - parallels-desktop
       - skype
-      #- caffeine
+      - caffeine
       - appcleaner
       - adobe-creative-cloud
       - java
+      - utorrent
   tasks:
     - include: tasks/homebrew.yml
     - include: tasks/zsh.yml

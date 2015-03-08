@@ -12,6 +12,7 @@
       - findutils
       - coreutils
       - php56 # install before composer
+      - php56-opcache
       - chruby
       - curl
       - composer
@@ -58,6 +59,7 @@
       - adobe-creative-cloud
       - java
       - utorrent
+      - beamer
   tasks:
     - include: tasks/homebrew.yml
     - include: tasks/zsh.yml

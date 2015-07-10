@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
 set -e
 
-echo 'Installing Ansible'
+working_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # prefer pip for installing python packages over the older easy_install
-#
-if [[ ! -x `which pip` ]]; then
-    sudo easy_install pip
+echo 'Check if pip is installed and updated'
+if [[ -x `which pip` ]]; then
+	pip install -U pip
+else
+    easy_install pip
 fi
 
-if [[ -x `which pip` && ! -x `which ansible` ]]; then
-    sudo CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments pip install ansible
+echo 'Check if ansible is installed and updated'
+if [[ -x `which ansible` ]]; then
+	pip install -U ansible
+else
+    pip install ansible
 fi
 
 echo 'Running Ansible to configure Dev machine'
-
-if [[ -x `which ansible` ]]; then
-	ansible-playbook -K -i inventory playbook.yml --ask-sudo-pass
-fi
+ansible-playbook -K -i $working_dir/inventory $working_dir/playbook.yml

@@ -8,11 +8,16 @@
       - casidiablo/custom
       - phinze/cask
       - thoughtbot/formulae
+      - gapple/services
     brews:
       - findutils
       - coreutils
       - php56 # install before composer
       - php56-opcache
+      - php56-xdebug
+      - php56-memcached
+      - php56-stats
+      - php56-igbinary
       - chruby
       - curl
       - composer
@@ -23,8 +28,6 @@
       - htop
       - hub
       - node
-      - php56-memcached
-      - php56-stats
       - php-code-sniffer
       - phpmd
       - rsync
@@ -33,6 +36,11 @@
       - memcached
       - zsh
       - hubflow
+      - python
+      - mysql
+      - phpunit
+      - elasticsearch
+      - php-cs-fixer
     casks:
       - asepsis
       - dropbox
@@ -54,12 +62,11 @@
       - omnigraffle
       - parallels-desktop
       - skype
-      - caffeine
-      - appcleaner
       - adobe-creative-cloud
       - java
       - utorrent
       - beamer
+      - silverlight
   tasks:
     - include: tasks/homebrew.yml
     - include: tasks/zsh.yml
